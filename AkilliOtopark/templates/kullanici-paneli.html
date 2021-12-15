@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+
+{% for category, message in messages %}
+<div class='alert alert-{{category}}'>
+    {{ message }}
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+<div class="container">
+
+    <h1>Kayıtlı Plakalarım</h1>
+    <table class="rwd-table">
+        <tr>
+            <th>Plaka Numarasi</th>
+            <th>İsim</th>
+            <th>Soyisim</th>
+        </tr>
+        {% for plaka in plakas %}
+
+        <tr>
+            <td data-th="Plaka Numarasi">{{ plaka.plaka}}</td>
+            <td data-th="İsim">{{ plaka.name}}</td>
+            <td data-th="Soyisim">{{ plaka.surname}}</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock content %}
